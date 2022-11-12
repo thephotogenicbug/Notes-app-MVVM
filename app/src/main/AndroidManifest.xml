@@ -14,10 +14,16 @@
         android:theme="@style/Theme.NotesAppMVVM"
         tools:targetApi="31">
         <activity
+            android:name=".View.UpdateActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View.NoteAddActivity"
             android:exported="false"
-            android:parentActivityName=".View.MainActivity"
-            >
+            android:parentActivityName=".View.MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

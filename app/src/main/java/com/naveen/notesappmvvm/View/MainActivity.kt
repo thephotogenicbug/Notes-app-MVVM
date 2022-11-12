@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var noteViewModel: NoteViewModel
 
     lateinit var addActivityResultLauncher: ActivityResultLauncher<Intent>
+    lateinit var updateActivityResultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val noteAdapter = NoteAdapter()
+        val noteAdapter = NoteAdapter(this)
         recyclerView.adapter = noteAdapter
 
         //register activity launcher
@@ -84,6 +85,18 @@ class MainActivity : AppCompatActivity() {
                 }
 
         })
+
+        updateActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
+            ActivityResultCallback { resultAddNote ->
+
+                val resultCode = resultAddNote.resultCode
+                val data = resultAddNote.data
+
+                if(resultCode == RESULT_OK && data != null){
+
+                }
+
+            })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
