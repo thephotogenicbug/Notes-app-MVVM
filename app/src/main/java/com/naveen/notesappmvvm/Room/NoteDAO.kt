@@ -21,5 +21,5 @@ interface NoteDAO {
    fun getAllNotes() : Flow<List<Note>>
 
     @Query("DELETE FROM note_table")
-    suspend fun deleteAllNotes()
+     fun deleteAllNotes()
 }
